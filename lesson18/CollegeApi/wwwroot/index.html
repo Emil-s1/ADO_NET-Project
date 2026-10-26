@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CollegeDB — студенты</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f3f6fa;color:#172033;font:16px Arial,sans-serif}
+    main{max-width:1000px;margin:40px auto;padding:24px;background:white;border-radius:14px;box-shadow:0 8px 30px #18233a12}
+    h1{margin-top:0}form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;margin:20px 0}
+    input,select,button{padding:11px;border:1px solid #cbd3df;border-radius:8px;font:inherit}
+    button{background:#087f8c;color:white;border:0;cursor:pointer}button.delete{background:#c0392b}
+    table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:12px;border-bottom:1px solid #e3e8ef}
+    .message{min-height:22px;color:#b42318}@media(max-width:700px){form{grid-template-columns:1fr}main{margin:12px;padding:16px}}
+  </style>
+</head>
+<body>
+<main>
+  <h1>CollegeDB — студенты</h1>
+  <p>Добавление и управление студентами</p>
+  <form id="student-form">
+    <input id="firstName" placeholder="Имя" required>
+    <input id="lastName" placeholder="Фамилия" required>
+    <select id="groupId"><option value="">Без группы</option></select>
+    <button type="submit">Добавить</button>
+  </form>
+  <div id="message" class="message"></div>
+  <table>
+    <thead><tr><th>ID</th><th>Имя</th><th>Фамилия</th><th>Группа</th><th></th></tr></thead>
+    <tbody id="students"></tbody>
+  </table>
+</main>
+<script src="routes.js"></script>
+</body>
+</html>
