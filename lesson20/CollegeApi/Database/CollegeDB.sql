@@ -1,0 +1,39 @@
+CREATE DATABASE CollegeDB;
+GO
+USE CollegeDB;
+GO
+
+CREATE TABLE Groups (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Students (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    FirstName NVARCHAR(100) NOT NULL,
+    LastName NVARCHAR(100) NOT NULL,
+    GroupId INT NULL,
+    CONSTRAINT FK_Students_Groups FOREIGN KEY (GroupId) REFERENCES Groups(Id)
+);
+
+CREATE TABLE Subjects (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Name NVARCHAR(150) NOT NULL
+);
+
+CREATE TABLE Teachers (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    FirstName NVARCHAR(100) NOT NULL,
+    LastName NVARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Grades (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    StudentId INT NOT NULL,
+    SubjectId INT NOT NULL,
+    Value INT NOT NULL CHECK (Value BETWEEN 1 AND 5),
+    CONSTRAINT FK_Grades_Students FOREIGN KEY (StudentId) REFERENCES Students(Id),
+    CONSTRAINT FK_Grades_Subjects FOREIGN KEY (SubjectId) REFERENCES Subjects(Id)
+);
+
+INSERT INTO Groups (Name) VALUES (N'ИС-21'), (N'ИС-22');
